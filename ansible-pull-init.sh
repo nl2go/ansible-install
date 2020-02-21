@@ -1,6 +1,6 @@
 #!/bin/sh
 
-python_version='3.7'
+required_python_version='3.7'
 
 parse_semantic_version() {
 	major="${1%%.*}"
@@ -26,7 +26,7 @@ install_python_on_ubuntu(){
   $shell_command "apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F23C5A6CF475977595C89F51BA6932366A755776"
   $shell_command "echo \"$apt_repo\" > /etc/apt/sources.list.d/python.list"
   $shell_command 'apt-get update -qq >/dev/null'
-  $shell_command "DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python${python_version} >/dev/null"
+  $shell_command "DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python${required_python_version} >/dev/null"
   exit 0
 }
 
