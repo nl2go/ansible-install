@@ -1,0 +1,12 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+    - name: Check Python availability
+      command: "python{{ expected_python_version }} --version"
+      register: python_version_result
+    - name: Verify python is installed
+      assert:
+        that:
+          - "'{{ expected_python_version }}' in python_version_result.stdout"
+        msg: "Python {{ expected_python_version }} is not installed!"

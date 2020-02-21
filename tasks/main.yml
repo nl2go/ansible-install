@@ -1,0 +1,9 @@
+---
+- name: Copy Ansible pull init
+  script:
+    cmd: ansible-pull-init.sh
+  register: ansible_pull_result
+
+- name: Print result
+  debug:
+    msg: "{{ ansible_pull_result.stdout }}"
