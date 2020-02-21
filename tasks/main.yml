@@ -3,6 +3,7 @@
   script:
     cmd: ansible-pull-init.sh
   register: ansible_pull_result
+  changed_when: no
 
 - name: Print result
   debug:
