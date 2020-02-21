@@ -6,8 +6,12 @@ driver:
 lint:
   name: yamllint
 platforms:
+  - name: ubuntu14
+    image: ubuntu:14.04
   - name: ubuntu16
     image: ubuntu:16.04
+  - name: ubuntu18
+    image: ubuntu:18.04
 provisioner:
   name: ansible
   inventory:
