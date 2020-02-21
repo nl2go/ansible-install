@@ -4,6 +4,7 @@
   tasks:
     - name: Check Python availability
       command: "python{{ expected_python_version }} --version"
+      changed_when: no
       register: python_version_result
     - name: Verify python is installed
       assert:
