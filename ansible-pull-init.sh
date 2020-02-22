@@ -1,6 +1,7 @@
 #!/bin/sh
 
-required_python_version='3.7'
+REQUIRED_PYTHON_VERSION='3.7'
+REQUIRED_ANSIBLE_VERSION='2.8.*'
 
 parse_semantic_version() {
 	major="${1%%.*}"
@@ -26,8 +27,19 @@ install_python_on_ubuntu(){
   $shell_command "apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F23C5A6CF475977595C89F51BA6932366A755776"
   $shell_command "echo \"$apt_repo\" > /etc/apt/sources.list.d/python.list"
   $shell_command 'apt-get update -qq >/dev/null'
-  $shell_command "DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python${required_python_version} >/dev/null"
-  exit 0
+  $shell_command "DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python${REQUIRED_PYTHON_VERSION} python3-pip >/dev/null"
+}
+
+upgrade_pip(){
+  pip3 install --upgrade pip
+}
+
+install_ansible(){
+  pip3 install ansible=="$REQUIRED_ANSIBLE_VERSION"
+}
+
+install_git_on_debian(){
+  $shell_command "DEBIAN_FRONTEND=noninteractive apt-get install -y -qq git > /dev/null"
 }
 
 set_distribution_version(){
@@ -73,7 +85,7 @@ set_distribution_version(){
 		*)
 			if is_command_exists lsb_release; then
 				dist_version="$(lsb_release --release | cut -f2)"
-			fi
+  			fi
 			if [ -z "$dist_version" ] && [ -r /etc/os-release ]; then
 				dist_version="$(. /etc/os-release && echo "$VERSION_ID")"
 			fi
@@ -132,6 +144,7 @@ do_install() {
     case "$lsb_dist" in
       ubuntu)
           install_python_on_ubuntu
+          install_git_on_debian
           ;;
       *)
         echo
@@ -140,9 +153,11 @@ do_install() {
         exit 1
         ;;
     esac
-	fi
 
-	exit 1
+    upgrade_pip
+    install_ansible
+
+	fi
 }
 
 do_install
