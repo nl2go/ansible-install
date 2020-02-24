@@ -1,5 +1,5 @@
-[![Travis (.org) branch](https://img.shields.io/travis/nl2go/ansible-pull-init/master)](https://travis-ci.org/nl2go/ansible-pull-init)
-[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/nl2go/ansible-pull-init)](https://github.com/nl2go/ansible-pull-init)
+[![Travis (.org) branch](https://img.shields.io/travis/nl2go/ansible-install/master)](https://travis-ci.org/nl2go/ansible-install)
+[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/nl2go/ansible-install)](https://github.com/nl2go/ansible-install)
 
 # Ansible Install
 
