@@ -1,14 +1,13 @@
 [![Travis (.org) branch](https://img.shields.io/travis/nl2go/ansible-pull-init/master)](https://travis-ci.org/nl2go/ansible-pull-init)
 [![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/nl2go/ansible-pull-init)](https://github.com/nl2go/ansible-pull-init)
 
-# Ansible Pull Init
+# Ansible Install
 
-Setup a remote copy of Ansible on each managed node, each set to run via cron and update playbook source via a source repository (s. [ansible-pull](https://docs.ansible.com/ansible/latest/cli/ansible-pull.html)).
-
+Installs the recent version of Ansible and related dependencies on various Linux distributions. 
 ## Usage
 
-    curl -fsSL https://raw.githubusercontent.com/nl2go/ansible-pull-init/master/ansible-pull-init.sh -o ansible-pull-init.sh
-    sh ansible-pull-init.sh
+    curl -fsSL https://raw.githubusercontent.com/nl2go/ansible-pull-init/master/ansible-install.sh -o ansible-install.sh
+    sh ansible-install.sh
 
 ## Maintainers
 

@@ -1,10 +1,6 @@
 ---
-- name: Copy Ansible pull init
+- name: Copy Ansible install
   script:
-    cmd: ansible-pull-init.sh
-  register: ansible_pull_result
+    cmd: ansible-install.sh
+  register: ansible_install_result
   changed_when: no
-
-- name: Print result
-  debug:
-    msg: "{{ ansible_pull_result.stdout }}"

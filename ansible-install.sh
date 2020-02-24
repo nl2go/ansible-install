@@ -26,8 +26,9 @@ install_python_on_ubuntu(){
   apt_repo="deb [arch=$(dpkg --print-architecture)] http://ppa.launchpad.net/deadsnakes/ppa/ubuntu $dist_version main"
   $shell_command "apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F23C5A6CF475977595C89F51BA6932366A755776"
   $shell_command "echo \"$apt_repo\" > /etc/apt/sources.list.d/python.list"
-  $shell_command 'apt-get update -qq >/dev/null'
+  $shell_command "apt-get update -qq >/dev/null"
   $shell_command "DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python${REQUIRED_PYTHON_VERSION} python3-pip >/dev/null"
+  $shell_command "update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${REQUIRED_PYTHON_VERSION} 2"
 }
 
 upgrade_pip(){
